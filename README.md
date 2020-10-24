@@ -5,7 +5,7 @@ With this module you can drive a stepper motor in 3 lines like this
 ```lua
 stepper  = require ('stepper')
 stepper.init({5,6,7,8})
-stepper.rotate(stepper.FORWARD,2500,5,0,function () print('Rotation done.') end)
+stepper.rotate(stepper.FORWARD,2500,1200,function () print('Rotation done.') end)
 ```
 As you can see, your code trigger rotate and let the module finish rotation and trigger callback. 
 
