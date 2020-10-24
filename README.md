@@ -63,7 +63,7 @@ Note : this is a async method. It'll trigger rotation and return immediately.
 
 ##### Signature : 
 ```lua
-rotate( direction, desired_steps, interval, timer_to_use, callback)
+rotate( direction, desired_steps, interval, callback)
 ```
 
 ##### Parameters : 
@@ -83,7 +83,7 @@ direction = stepper.FORWARD
 desired_steps = 2500 
 interval = 1200 
 timer_to_use = 0 
-stepper.rotate(direction,desired_steps,interval,timer_to_use,function ()
+stepper.rotate(direction,desired_steps,interval,function ()
     print('Rotation done. inside callback.')
     -- do some thing useful 
     end)
