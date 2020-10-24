@@ -73,7 +73,6 @@ rotate( direction, desired_steps, interval, timer_to_use, callback)
 | **direction** | _stepper.FORWARD or stepper.REVERSE_ |
 | **desired_steps** | _number between 0 to infinity - 2500 is default which is roughly half a rotation_ |
 | **interval** | _time delay in milliseconds between steps, smaller self number is, faster the motor rotates . 5 is default_ |
-| **timer_to_use** | _which nodemcu timer to use, 0 is default_ |
 | **callback** | _callback to invoke on completion of given rotation |
 
 
@@ -82,7 +81,7 @@ rotate( direction, desired_steps, interval, timer_to_use, callback)
 ```lua
 direction = stepper.FORWARD 
 desired_steps = 2500 
-interval = 5 
+interval = 1200 
 timer_to_use = 0 
 stepper.rotate(direction,desired_steps,interval,timer_to_use,function ()
     print('Rotation done. inside callback.')
@@ -94,5 +93,5 @@ stepper.rotate(direction,desired_steps,interval,timer_to_use,function ()
 ```lua
 stepper  = require ('stepper')
 stepper.init({5,6,7,8})
-stepper.rotate(stepper.FORWARD,2500,5,0,function () print('Rotation done.') end)
+stepper.rotate(stepper.FORWARD,2500,1200,function () print('Rotation done.') end)
 ```
