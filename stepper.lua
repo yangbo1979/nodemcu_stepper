@@ -83,8 +83,8 @@ do
     local single_step = function ()
         --increment the counter and check if there are steps to execute
         step_counter = step_counter + 1
-        if step_counter > motor_params.desired_steps then
-            motor_timer:stop()
+        if step_counter >= motor_params.desired_steps then
+            --motor_timer:stop()
             for index,mcu_pin in ipairs(motor_params.pins) do
                 gpio.write(mcu_pin, gpio.LOW)
             end
@@ -141,7 +141,11 @@ do
         phase         = 1
         
         --tmr.alarm(motor_params.timer_to_use, motor_params.step_interval, REPEATING_TIMER, single_step)
-        motor_timer:alarm(motor_params.step_interval, REPEATING_TIMER, single_step)
+        --motor_timer:alarm(motor_params.step_interval, REPEATING_TIMER, single_step)
+        for i=1,motor_params.desired_steps,1 do
+            single_step()
+            tmr.delay(motor_params.step_interval)
+        end
     end
 
     stepper = {
